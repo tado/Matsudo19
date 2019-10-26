@@ -5,23 +5,25 @@ void ofApp::setup() {
 	ofSetFrameRate(60);
 	ofBackground(0);
 
-	bpm.setBpm(50.0);
+	bpm.setBpm(58);
 	bpm.setBeatPerBar(div);
 	bpm.start();
 
-	string path = ofToDataPath("cdn-gamelan");
+	string path = ofToDataPath("newGamelan");
 	cout << path << endl;
 	ofDirectory dir(path);
 	dir.allowExt("wav");
 	dir.listDir();
-	sndNum = dir.size();
-
-	for (int i = 0; i < dir.size(); i++) {
+	
+	int sampleLength = 40;
+	int sampleBegin = ofRandom(0, dir.size() - sampleLength);
+	for (int i = sampleBegin; i < sampleBegin + 40; i++) {
 		ofLogNotice(dir.getPath(i));
 		ofSoundPlayer s;
 		s.loadSound(dir.getPath(i));
 		snd.push_back(s);
 	}
+	sndNum = snd.size();
 
 	for (int i = 0; i < div; i++) {
 		notes.push_back(ofRandom(0, snd.size()));
@@ -29,10 +31,10 @@ void ofApp::setup() {
 	}
 	for (int i = 0; i < div; i++) {
 		if (i < div / 2) {
-			amp[i] = 0.0;
+			amp[i] = 1.0;
 		}
 		else {
-			amp[i] = 1.0;
+			amp[i] = 0.0;
 		}
 	}
 	random_shuffle(&amp[0], &amp[div - 1]);
