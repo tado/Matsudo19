@@ -5,7 +5,7 @@ void ofApp::setup() {
 	ofSetFrameRate(60);
 	ofBackground(0);
 
-	bpm.setBpm(58);
+	bpm.setBpm(65);
 	bpm.setBeatPerBar(div);
 	bpm.start();
 
@@ -44,7 +44,7 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
-
+	//bpm.setBpm(bpm.getBpm() * 1.001);
 }
 
 //--------------------------------------------------------------
