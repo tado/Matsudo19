@@ -34,13 +34,21 @@ void ofApp::draw(){
 
 void ofApp::getBeat() {
 	if (beatCount % 8 == 0) {
-		int on[] = { 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
+		currentBpm = ofRandom(20, 120);
+		//bpm.setBpm(currentBpm);
+
+		int on[] = { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
 		random_shuffle(&on[0], &on[11]);
 		for (int i = 0; i < 12; i++) {
 			ofxOscMessage m;
 			m.setAddress("/que");
 			m.addIntArg(on[i]);
 			sender[i].sendMessage(m, false);
+
+			ofxOscMessage m2;
+			m2.setAddress("/bpm");
+			m2.addIntArg(currentBpm);
+			sender[i].sendMessage(m2, false);
 		}
 	}
 	/*
@@ -67,15 +75,15 @@ void ofApp::keyPressed(int key){
 	int on[] = { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
 	random_shuffle(&on[0], &on[11]);
 	for (int i = 0; i < 12; i++) {
-		ofxOscMessage m2;
-		m2.setAddress("/que");
-		m2.addIntArg(on[i]);
-		sender[i].sendMessage(m2, false);
-
 		ofxOscMessage m;
-		m.setAddress("/bpm");
-		m.addIntArg(currentBpm);
+		m.setAddress("/que");
+		m.addIntArg(on[i]);
 		sender[i].sendMessage(m, false);
+
+		ofxOscMessage m2;
+		m2.setAddress("/bpm");
+		m2.addIntArg(currentBpm);
+		sender[i].sendMessage(m2, false);
 	}
 }
 
