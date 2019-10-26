@@ -166,3 +166,8 @@ Desktop.ini
 
 .mailmap
 /apps*/
+MultiRhythmSim/.vs/MultiRhythmSim/v16/Browse.VC.db
+*.opendb
+*.db
+*.db-shm
+*.db-wal

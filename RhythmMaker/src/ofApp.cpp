@@ -2,14 +2,14 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-	ofSetFrameRate(10);
+	ofSetFrameRate(60);
 	ofBackground(0);
 
-	bpm.setBpm(180.0);
-	bpm.setBeatPerBar(8);
+	bpm.setBpm(50.0);
+	bpm.setBeatPerBar(div);
 	bpm.start();
 
-	string path = ofToDataPath("gamelan");
+	string path = ofToDataPath("cdn-gamelan");
 	cout << path << endl;
 	ofDirectory dir(path);
 	dir.allowExt("wav");
@@ -23,6 +23,19 @@ void ofApp::setup() {
 		snd.push_back(s);
 	}
 
+	for (int i = 0; i < div; i++) {
+		notes.push_back(ofRandom(0, snd.size()));
+		pan.push_back(ofRandom(-1.0, 1.0));
+	}
+	for (int i = 0; i < div; i++) {
+		if (i < div / 2) {
+			amp[i] = 0.0;
+		}
+		else {
+			amp[i] = 1.0;
+		}
+	}
+	random_shuffle(&amp[0], &amp[div - 1]);
 	ofAddListener(bpm.beatEvent, this, &ofApp::getBeat);
 	beatCount = 0;
 }
@@ -38,11 +51,24 @@ void ofApp::draw(){
 }
 
 void ofApp::getBeat() {
-	int n = int(ofRandom(5)) + 5;
-	snd[n].setVolume(0.5);
-	snd[n].setMultiPlay(true);
+	int n = notes[beatCount % div];
+	snd[n].setVolume(0.4);
+	snd[n].setPan(ofRandom(-1, 1));
+	snd[n].setVolume(amp[beatCount % div]);
+	snd[n].setPan(pan[beatCount % div]);
 	snd[n].play();
 	beatCount++;
+
+	if (beatCount % (div * 8) == 0) {
+		notes.clear();
+		pan.clear();
+		for (int i = 0; i < div; i++) {
+			notes.push_back(ofRandom(0, snd.size()));
+			pan.push_back(ofRandom(-1.0, 1.0));
+		}
+		random_shuffle(&amp[0], &amp[div - 1]);
+		beatCount = 0;
+	}
 }
 
 //--------------------------------------------------------------
