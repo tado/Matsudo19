@@ -200,6 +200,7 @@
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
     <ClCompile Include="..\..\..\addons\ofxSequencer\src\ofxSequencer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxSequencer\src\ofxSequencerBpm.cpp" />
+    <ClCompile Include="src\OscHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h" />
@@ -225,6 +226,7 @@
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
     <ClInclude Include="..\..\..\addons\ofxSequencer\src\ofxSequencer.h" />
     <ClInclude Include="..\..\..\addons\ofxSequencer\src\ofxSequencerBpm.h" />
+    <ClInclude Include="src\OscHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

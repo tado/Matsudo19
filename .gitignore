@@ -171,3 +171,10 @@ MultiRhythmSim/.vs/MultiRhythmSim/v16/Browse.VC.db
 *.db
 *.db-shm
 *.db-wal
+*.db
+*.db
+*.db
+*.exp
+*.vcxproj
+*.filters
+*.db

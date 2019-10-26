@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxSequencerBpm.h"
+#include "OscHandler.h"
 
 class ofApp : public ofBaseApp {
 
@@ -33,4 +34,6 @@ public:
 	vector<int> notes;
 	vector<float> pan;
 	float amp[div];
+
+	OscHandler* osc;
 };

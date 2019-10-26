@@ -7,7 +7,7 @@ void ofApp::setup() {
 
 	bpm.setBpm(65);
 	bpm.setBeatPerBar(div);
-	bpm.start();
+	//bpm.start();
 
 	string path = ofToDataPath("newGamelan");
 	cout << path << endl;
@@ -40,16 +40,21 @@ void ofApp::setup() {
 	random_shuffle(&amp[0], &amp[div - 1]);
 	ofAddListener(bpm.beatEvent, this, &ofApp::getBeat);
 	beatCount = 0;
+
+	osc = new OscHandler();
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
-	//bpm.setBpm(bpm.getBpm() * 1.001);
+	osc->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+	if (bpm.isPlaying()) {
+		ofSetColor(255);
+		ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+	}
 }
 
 void ofApp::getBeat() {
@@ -57,11 +62,11 @@ void ofApp::getBeat() {
 	snd[n].setVolume(0.4);
 	snd[n].setPan(ofRandom(-1, 1));
 	snd[n].setVolume(amp[beatCount % div]);
-	snd[n].setPan(pan[beatCount % div]);
+	//snd[n].setPan(pan[beatCount % div]);
 	snd[n].play();
 	beatCount++;
 
-	if (beatCount % (div * 8) == 0) {
+	if (beatCount % (div * 4) == 0) {
 		notes.clear();
 		pan.clear();
 		for (int i = 0; i < div; i++) {
