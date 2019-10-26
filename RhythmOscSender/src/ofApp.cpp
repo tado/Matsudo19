@@ -9,7 +9,6 @@ void ofApp::setup() {
 	currentBpm = 60;
 	bpm.setBpm(currentBpm);
 	bpm.setBeatPerBar(1);
-	bpm.start();
 	/*
 	ofxOscMessage m;
 	m.setAddress("/bpm");
@@ -21,6 +20,7 @@ void ofApp::setup() {
 
 
 	ofAddListener(bpm.beatEvent, this, &ofApp::getBeat);
+	bpm.start();
 }
 //--------------------------------------------------------------
 void ofApp::update(){
@@ -33,7 +33,7 @@ void ofApp::draw(){
 }
 
 void ofApp::getBeat() {
-	if (beatCount % 8 == 0) {
+	if (beatCount % 16 == 0) {
 		currentBpm = ofRandom(20, 120);
 		//bpm.setBpm(currentBpm);
 
