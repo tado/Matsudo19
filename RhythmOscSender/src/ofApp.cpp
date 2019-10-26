@@ -6,7 +6,7 @@ void ofApp::setup() {
 		sender[i].setup("192.168.11." + ofToString(20 + i), 10000);
 	}
 	beatCount = 0;
-	currentBpm = 60;
+	currentBpm = 40;
 	bpm.setBpm(currentBpm);
 	bpm.setBeatPerBar(1);
 	/*
