@@ -49,7 +49,15 @@
     <ClCompile Include="..\..\..\addons\ofxSequencer\src\ofxSequencerBpm.cpp">
       <Filter>addons\ofxSequencer\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\OscHandler.cpp" />
+    <ClCompile Include="src\OscHandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RhythmGen.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Ripple.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -159,7 +167,15 @@
     <ClInclude Include="..\..\..\addons\ofxSequencer\src\ofxSequencerBpm.h">
       <Filter>addons\ofxSequencer\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\OscHandler.h" />
+    <ClInclude Include="src\OscHandler.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RhythmGen.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Ripple.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

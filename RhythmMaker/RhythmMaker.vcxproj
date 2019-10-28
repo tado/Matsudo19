@@ -201,6 +201,8 @@
     <ClCompile Include="..\..\..\addons\ofxSequencer\src\ofxSequencer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxSequencer\src\ofxSequencerBpm.cpp" />
     <ClCompile Include="src\OscHandler.cpp" />
+    <ClCompile Include="src\RhythmGen.cpp" />
+    <ClCompile Include="src\Ripple.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h" />
@@ -227,6 +229,8 @@
     <ClInclude Include="..\..\..\addons\ofxSequencer\src\ofxSequencer.h" />
     <ClInclude Include="..\..\..\addons\ofxSequencer\src\ofxSequencerBpm.h" />
     <ClInclude Include="src\OscHandler.h" />
+    <ClInclude Include="src\RhythmGen.h" />
+    <ClInclude Include="src\Ripple.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

@@ -6,7 +6,7 @@ void ofApp::setup() {
 		sender[i].setup("192.168.11." + ofToString(20 + i), 10000);
 	}
 	beatCount = 0;
-	currentBpm = 40;
+	currentBpm = 80;
 	bpm.setBpm(currentBpm);
 	bpm.setBeatPerBar(1);
 	/*
@@ -37,7 +37,7 @@ void ofApp::getBeat() {
 		currentBpm = ofRandom(20, 120);
 		//bpm.setBpm(currentBpm);
 
-		int on[] = { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
+		int on[] = { 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 };
 		random_shuffle(&on[0], &on[11]);
 		for (int i = 0; i < 12; i++) {
 			ofxOscMessage m;
@@ -51,19 +51,6 @@ void ofApp::getBeat() {
 			sender[i].sendMessage(m2, false);
 		}
 	}
-	/*
-	if (beatCount % 14 == 0) {
-		bpm.setBpm(currentBpm);
-		bpm.setBeatPerBar(1);
-		ofxOscMessage m2;
-		m2.setAddress("/bpm");
-		m2.addIntArg(currentBpm);
-		for (int i = 0; i < 12; i++) {
-			sender[i].sendMessage(m2, false);
-		}
-		bpm.start();
-	}
-	*/
 	beatCount++;
 }
 
@@ -72,7 +59,7 @@ void ofApp::keyPressed(int key){
 	currentBpm = ofRandom(20, 120);
 	bpm.setBpm(currentBpm);
 
-	int on[] = { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
+	int on[] = { 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 };
 	random_shuffle(&on[0], &on[11]);
 	for (int i = 0; i < 12; i++) {
 		ofxOscMessage m;

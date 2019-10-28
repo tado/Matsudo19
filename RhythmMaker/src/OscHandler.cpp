@@ -14,19 +14,19 @@ void OscHandler::update() {
 
 		if (m.getAddress() == "/que") {
 			if (m.getArgAsInt(0) == 0) {
-				app->bpm.stop();
+				app->rhythmGen->sequenceBpm.stop();
 			}
 			else {
-				app->beatCount = 0;
-				app->bpm.start();
+				app->rhythmGen->beatCount = 0;
+				app->rhythmGen->sequenceBpm.start();
 			}
 		}
 		if (m.getAddress() == "/bpm") {
-			app->bpm.setBpm(m.getArgAsInt(0));
-			app->beatCount = 0;
-			if (app->bpm.isPlaying()) {
-				app->bpm.stop();
-				app->bpm.start();
+			app->rhythmGen->sequenceBpm.setBpm(m.getArgAsInt(0));
+			app->rhythmGen->beatCount = 0;
+			if (app->rhythmGen->sequenceBpm.isPlaying()) {
+				app->rhythmGen->sequenceBpm.stop();
+				app->rhythmGen->sequenceBpm.start();
 			}
 		}
 	}
