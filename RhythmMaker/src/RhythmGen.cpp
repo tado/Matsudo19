@@ -49,7 +49,6 @@ void RhythmGen::getBeat() {
 		int n = notes[beatCount % div];
 		snd[n].setPan(ofRandom(-1, 1));
 		snd[n].setVolume(amp[beatCount % div]);
-		//snd[n].setPan(pan[beatCount % div]);
 		snd[n].play();
 		beatCount++;
 
@@ -67,13 +66,5 @@ void RhythmGen::getBeat() {
 		if (amp[beatCount % div] > 0) {
 			app->rippleManager->ripple[beatCount % div].setLive();
 		}
-		/*
-		if (amp[beatCount % div] > 0) {
-			ripples.push_back(new Ripple());
-		}
-		if (ripples.size() > 5) {
-			ripples.erase(ripples.begin());
-		}
-		*/
 	}
 }
