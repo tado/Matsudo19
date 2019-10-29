@@ -17,7 +17,7 @@ void OscHandler::update() {
 				app->rhythmGen->sequenceBpm.stop();
 			}
 			else {
-				app->rhythmGen->beatCount = 0;
+				//app->rhythmGen->beatCount = 0;
 				app->rhythmGen->sequenceBpm.start();
 			}
 		}

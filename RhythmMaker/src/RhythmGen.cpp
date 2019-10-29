@@ -60,7 +60,7 @@ void RhythmGen::getBeat() {
 	snd[n].play();
 	beatCount++;
 
-	if (beatCount % (div * 4) == 0) {
+	if (beatCount % (div * 2) == 0) {
 		notes.clear();
 		pan.clear();
 		for (int i = 0; i < div; i++) {
