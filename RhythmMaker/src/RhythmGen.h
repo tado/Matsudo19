@@ -21,5 +21,6 @@ public:
 	float amp[div];
 
 	vector<Ripple *> ripples;
+	bool live;
 };
 

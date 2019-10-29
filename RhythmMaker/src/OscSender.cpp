@@ -14,11 +14,18 @@ OscSender::OscSender() {
 		ofAddListener(bpm.beatEvent, this, &OscSender::getBeat);
 
 		bpm.start();
+		for (int i = 0; i < 12; i++) {
+			for (int i = 0; i < 12; i++) {
+				ofxOscMessage m;
+				m.setAddress("/start");
+				sender[i].sendMessage(m, false);
+			}
+		}
 	}
 }
 
 void OscSender::getBeat() {
-	if (beatCount % 1 == 0) {
+	if (beatCount % 3 == 0) {
 		currentBpm = ofRandom(20, 100);
 		//bpm.setBpm(currentBpm);
 		//int on[] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };

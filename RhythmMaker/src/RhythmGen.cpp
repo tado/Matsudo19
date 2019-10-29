@@ -2,6 +2,7 @@
 
 RhythmGen::RhythmGen(int _bpm) {
 	bpm = _bpm;
+	live = true;
 	sequenceBpm.setBpm(bpm);
 	sequenceBpm.setBeatPerBar(div);
 	//sequenceBpm.start();
@@ -53,28 +54,30 @@ void RhythmGen::draw() {
 }
 
 void RhythmGen::getBeat() {
-	int n = notes[beatCount % div];
-	snd[n].setPan(ofRandom(-1, 1));
-	snd[n].setVolume(amp[beatCount % div]);
-	//snd[n].setPan(pan[beatCount % div]);
-	snd[n].play();
-	beatCount++;
+	if (live) {
+		int n = notes[beatCount % div];
+		snd[n].setPan(ofRandom(-1, 1));
+		snd[n].setVolume(amp[beatCount % div]);
+		//snd[n].setPan(pan[beatCount % div]);
+		snd[n].play();
+		beatCount++;
 
-	if (beatCount % (div * 2) == 0) {
-		notes.clear();
-		pan.clear();
-		for (int i = 0; i < div; i++) {
-			notes.push_back(ofRandom(0, snd.size()));
-			pan.push_back(ofRandom(-1.0, 1.0));
+		if (beatCount % (div * 2) == 0) {
+			notes.clear();
+			pan.clear();
+			for (int i = 0; i < div; i++) {
+				notes.push_back(ofRandom(0, snd.size()));
+				pan.push_back(ofRandom(-1.0, 1.0));
+			}
+			random_shuffle(&amp[0], &amp[div - 1]);
+			beatCount = 0;
 		}
-		random_shuffle(&amp[0], &amp[div - 1]);
-		beatCount = 0;
-	}
 
-	if (amp[beatCount % div] > 0) {
-		ripples.push_back(new Ripple());
-	}
-	if (ripples.size() > 5) {
-		ripples.erase(ripples.begin());
+		if (amp[beatCount % div] > 0) {
+			ripples.push_back(new Ripple());
+		}
+		if (ripples.size() > 5) {
+			ripples.erase(ripples.begin());
+		}
 	}
 }

@@ -11,14 +11,18 @@ void OscHandler::update() {
 		ofApp* app = ((ofApp*)ofGetAppPtr());
 		ofxOscMessage m;
 		receiver.getNextMessage(m);
-
+		if (m.getAddress() == "/start") {
+			app->rhythmGen->sequenceBpm.start();
+		}
 		if (m.getAddress() == "/que") {
 			if (m.getArgAsInt(0) == 0) {
-				app->rhythmGen->sequenceBpm.stop();
+				//app->rhythmGen->sequenceBpm.stop();
+				app->rhythmGen->live = false;
 			}
 			else {
 				//app->rhythmGen->beatCount = 0;
-				app->rhythmGen->sequenceBpm.start();
+				//app->rhythmGen->sequenceBpm.start();
+				app->rhythmGen->live = true;
 			}
 		}
 		if (m.getAddress() == "/bpm") {
