@@ -30,7 +30,7 @@ void OscSender::getBeat() {
 		//bpm.setBpm(currentBpm);
 		//int on[] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 		int on[16];
-		int partNum = ofRandom(2, 16);
+		int partNum = ofRandom(1, 8);
 		for (int i = 0; i < 16; i++) {
 			if (i <= partNum) {
 				on[i] = 1;

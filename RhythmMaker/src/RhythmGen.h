@@ -19,8 +19,6 @@ public:
 	vector<int> notes;
 	vector<float> pan;
 	float amp[div];
-
-	vector<Ripple *> ripples;
 	bool live;
 };
 

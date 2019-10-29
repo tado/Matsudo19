@@ -5,8 +5,9 @@ void ofApp::setup() {
 	ofSetFrameRate(60);
 	ofBackground(0);
 
-	rhythmGen = new RhythmGen(80);
+	rhythmGen = new RhythmGen(60);
 	osc = new OscHandler();
+	rippleManager = new RippleManager();
 
 	xml.loadFile("settings.xml");
 	cout << xml.getValue("address", "127.0.0.1") << endl;
@@ -24,7 +25,7 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	rhythmGen->draw();
+	rippleManager->draw();
 }
 
 //--------------------------------------------------------------

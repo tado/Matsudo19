@@ -1,14 +1,13 @@
 #include "RhythmGen.h"
+#include "ofApp.h"
 
 RhythmGen::RhythmGen(int _bpm) {
 	bpm = _bpm;
 	live = true;
 	sequenceBpm.setBpm(bpm);
 	sequenceBpm.setBeatPerBar(div);
-	//sequenceBpm.start();
 
 	string path = ofToDataPath("newGamelan");
-	//cout << path << endl;
 	ofDirectory dir(path);
 	dir.allowExt("wav");
 	dir.listDir();
@@ -41,19 +40,11 @@ RhythmGen::RhythmGen(int _bpm) {
 }
 
 void RhythmGen::draw() {
-	/*
-	if (sequenceBpm.isPlaying()) {
-		ofSetColor(255);
-		ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
-	}
-	*/
 
-	for (int i = 0; i < ripples.size(); i++) {
-		ripples[i]->draw();
-	}
 }
 
 void RhythmGen::getBeat() {
+	ofApp* app = ((ofApp*)ofGetAppPtr());
 	if (live) {
 		int n = notes[beatCount % div];
 		snd[n].setPan(ofRandom(-1, 1));
@@ -74,10 +65,15 @@ void RhythmGen::getBeat() {
 		}
 
 		if (amp[beatCount % div] > 0) {
+			app->rippleManager->ripple[beatCount % div].setLive();
+		}
+		/*
+		if (amp[beatCount % div] > 0) {
 			ripples.push_back(new Ripple());
 		}
 		if (ripples.size() > 5) {
 			ripples.erase(ripples.begin());
 		}
+		*/
 	}
 }

@@ -5,6 +5,7 @@
 #include "OscHandler.h"
 #include "OscSender.h"
 #include "RhythmGen.h"
+#include "RippleManager.h"
 
 class ofApp : public ofBaseApp {
 
@@ -28,6 +29,7 @@ public:
 	OscHandler* osc;
 	OscSender* oscSender;
 	RhythmGen* rhythmGen;
+	RippleManager* rippleManager;
 	ofxXmlSettings xml;
 	string address;
 	int id;
