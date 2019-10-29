@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "OscHandler.h"
 #include "RhythmGen.h"
+#include "ofxXmlSettings.h"
 
 class ofApp : public ofBaseApp {
 
@@ -25,4 +26,7 @@ public:
 
 	OscHandler* osc;
 	RhythmGen* rhythmGen;
+	ofxXmlSettings xml;
+	string address;
+	int id;
 };
