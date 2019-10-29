@@ -7,6 +7,7 @@ void ofApp::setup() {
 
 	rhythmGen = new RhythmGen(80);
 	osc = new OscHandler();
+	oscSender = new OscSender();
 
 	xml.loadFile("settings.xml");
 	cout << xml.getValue("address", "127.0.0.1") << endl;

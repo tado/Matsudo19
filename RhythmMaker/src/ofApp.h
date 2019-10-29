@@ -1,9 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "OscHandler.h"
-#include "RhythmGen.h"
 #include "ofxXmlSettings.h"
+#include "OscHandler.h"
+#include "OscSender.h"
+#include "RhythmGen.h"
 
 class ofApp : public ofBaseApp {
 
@@ -25,6 +26,7 @@ public:
 	void gotMessage(ofMessage msg);
 
 	OscHandler* osc;
+	OscSender* oscSender;
 	RhythmGen* rhythmGen;
 	ofxXmlSettings xml;
 	string address;
