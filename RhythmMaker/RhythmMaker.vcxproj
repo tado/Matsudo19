@@ -187,6 +187,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\OscHandler.cpp" />
+    <ClCompile Include="src\OscSender.cpp" />
     <ClCompile Include="src\RhythmGen.cpp" />
     <ClCompile Include="src\Ripple.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
@@ -207,10 +208,12 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+    <ClCompile Include="src\RippleManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\OscHandler.h" />
+    <ClInclude Include="src\OscSender.h" />
     <ClInclude Include="src\RhythmGen.h" />
     <ClInclude Include="src\Ripple.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
@@ -237,6 +240,7 @@
     <ClInclude Include="..\..\..\addons\ofxSequencer\src\ofxSequencerBpm.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+    <ClInclude Include="src\RippleManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
