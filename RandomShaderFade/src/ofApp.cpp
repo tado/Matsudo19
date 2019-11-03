@@ -19,7 +19,7 @@ void ofApp::draw(){
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	for (int i = 0; i < NUM; i++) {
 		float br = sin(ofGetElapsedTimef() / 3.0 + TWO_PI / NUM * i) * 48 + 48;
-		ofSetColor(br * 0.4, br * 1.2, br * 1.5);
+		ofSetColor(br * 0.4, br * 1.2, br * 1.2);
 		if (br <= 5) {
 			shader[i].changeShader();
 		}
