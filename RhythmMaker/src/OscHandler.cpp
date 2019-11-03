@@ -14,14 +14,14 @@ void OscHandler::update() {
 		if (m.getAddress() == "/start") {
 			app->rhythmGen->sequenceBpm.start();
 		}
+		if (m.getAddress() == "/stop") {
+			app->rhythmGen->sequenceBpm.stop();
+		}
 		if (m.getAddress() == "/que") {
 			if (m.getArgAsInt(0) == 0) {
-				//app->rhythmGen->sequenceBpm.stop();
 				app->rhythmGen->live = false;
 			}
 			else {
-				//app->rhythmGen->beatCount = 0;
-				//app->rhythmGen->sequenceBpm.start();
 				app->rhythmGen->live = true;
 			}
 		}

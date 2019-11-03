@@ -14,6 +14,7 @@ void ofApp::setup() {
 	cout << xml.getValue("id", 0) << endl;
 	address = xml.getValue("address", "127.0.0.1");
 	id = xml.getValue("id", 0);
+	bpm = int(ofMap(id, 0, 12, 20, 100));
 
 	oscSender = new OscSender();
 }
@@ -26,6 +27,10 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw(){
 	rippleManager->draw();
+}
+
+void ofApp::exit() {
+	oscSender->exit();
 }
 
 //--------------------------------------------------------------

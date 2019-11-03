@@ -7,6 +7,7 @@ class OscSender {
 public:
 	OscSender();
 	void getBeat();
+	void exit();
 
 	ofxOscSender sender[12];
 	ofxSequencerBpm bpm;
