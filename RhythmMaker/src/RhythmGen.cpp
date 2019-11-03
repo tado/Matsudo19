@@ -47,7 +47,7 @@ void RhythmGen::getBeat() {
 	ofApp* app = ((ofApp*)ofGetAppPtr());
 	if (live) {
 		int n = notes[beatCount % div];
-		snd[n].setPan(ofRandom(-1, 1));
+		//snd[n].setPan(ofRandom(-1, 1));
 		snd[n].setVolume(amp[beatCount % div]);
 		snd[n].play();
 		beatCount++;
