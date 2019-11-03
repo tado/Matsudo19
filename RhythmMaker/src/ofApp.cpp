@@ -14,7 +14,7 @@ void ofApp::setup() {
 	cout << xml.getValue("id", 0) << endl;
 	address = xml.getValue("address", "127.0.0.1");
 	id = xml.getValue("id", 0);
-	bpm = int(ofMap(id, 0, 12, 20, 100));
+	bpm = int(ofMap(id, 0, 11, 20, 130));
 
 	oscSender = new OscSender();
 }

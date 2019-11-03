@@ -8,8 +8,7 @@ OscSender::OscSender() {
 		sender[i].setup("192.168.11." + ofToString(20 + i), 10000);
 	}
 	beatCount = 0;
-	currentBpm = ofRandom(10, 40);
-	bpm.setBpm(currentBpm);
+	bpm.setBpm(ofRandom(10, 20));
 	bpm.setBeatPerBar(1);
 	ofAddListener(bpm.beatEvent, this, &OscSender::getBeat);
 	bpm.start();
@@ -25,7 +24,6 @@ OscSender::OscSender() {
 
 void OscSender::getBeat() {
 	ofApp* app = ((ofApp*)ofGetAppPtr());
-	currentBpm = app->bpm;
 	if (beatCount % 16 == 0) {
 		//set Player part
 		int on[16];
@@ -48,7 +46,7 @@ void OscSender::getBeat() {
 		for (int i = 0; i < 12; i++) {
 			ofxOscMessage m2;
 			m2.setAddress("/bpm");
-			m2.addIntArg(currentBpm);
+			m2.addIntArg(app->bpm);
 			sender[i].sendMessage(m2, false);
 		}
 	}
