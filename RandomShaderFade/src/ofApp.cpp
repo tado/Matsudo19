@@ -3,7 +3,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofBackground(0);
-	//ofToggleFullscreen();
+	ofToggleFullscreen();
+	ofSetWindowShape(1920, 1080);
 	ofHideCursor();
 }
 

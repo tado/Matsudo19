@@ -1,7 +1,6 @@
 #pragma once
 #include "ofMain.h"
 #include "ofxSequencerBpm.h"
-#include "Ripple.h"
 
 class RhythmGen {
 public:
@@ -10,7 +9,7 @@ public:
 	void draw();
 
 	ofxSequencerBpm sequenceBpm;
-	int bpm;
+	//int bpm;
 	int sndNum;
 	vector<ofSoundPlayer> snd;
 	int beatCount;

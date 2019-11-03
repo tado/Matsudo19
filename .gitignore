@@ -171,3 +171,5 @@ Desktop.ini
 *.vcxproj
 *.filters
 *.filters
+*.user
+*.vcxproj

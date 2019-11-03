@@ -4,19 +4,19 @@
 void ofApp::setup() {
 	ofSetFrameRate(60);
 	ofBackground(0);
+	ofHideCursor();
 
 	rhythmGen = new RhythmGen(60);
-	osc = new OscHandler();
-	rippleManager = new RippleManager();
-
 	xml.loadFile("settings.xml");
 	cout << xml.getValue("address", "127.0.0.1") << endl;
 	cout << xml.getValue("id", 0) << endl;
 	address = xml.getValue("address", "127.0.0.1");
 	id = xml.getValue("id", 0);
-	bpm = int(ofMap(id, 0, 11, 20, 130));
+	bpm = int(ofMap(id, 0, 11, 20, 110));
 
+	osc = new OscHandler();
 	oscSender = new OscSender();
+	keyRectManager = new KeyRectManager();
 }
 
 //--------------------------------------------------------------
@@ -26,11 +26,11 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	rippleManager->draw();
+	keyRectManager->draw();
 }
 
 void ofApp::exit() {
-	oscSender->exit();
+	//oscSender->exit();
 }
 
 //--------------------------------------------------------------

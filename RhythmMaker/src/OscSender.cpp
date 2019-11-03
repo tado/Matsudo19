@@ -12,7 +12,9 @@ OscSender::OscSender() {
 	bpm.setBeatPerBar(1);
 	ofAddListener(bpm.beatEvent, this, &OscSender::getBeat);
 	bpm.start();
+	app->rhythmGen->sequenceBpm.start();
 
+	/*
 	if (app->id == 0) {
 		for (int i = 0; i < 12; i++) {
 			ofxOscMessage m;
@@ -20,15 +22,16 @@ OscSender::OscSender() {
 			sender[i].sendMessage(m, false);
 		}
 	}
+	*/
 }
 
 void OscSender::getBeat() {
 	ofApp* app = ((ofApp*)ofGetAppPtr());
-	if (beatCount % 16 == 0) {
+	if (beatCount % 6 == 0) {
 		//set Player part
-		int on[16];
-		int partNum = ofRandom(1, 8);
-		for (int i = 0; i < 16; i++) {
+		int on[12];
+		int partNum = ofRandom(2, 8);
+		for (int i = 0; i < 12; i++) {
 			if (i <= partNum) {
 				on[i] = 1;
 			}
@@ -38,12 +41,16 @@ void OscSender::getBeat() {
 		}
 		random_shuffle(&on[0], &on[11]);
 		for (int i = 0; i < 12; i++) {
+			//send que to players
 			ofxOscMessage m;
 			m.setAddress("/que");
 			m.addIntArg(on[i]);
 			sender[i].sendMessage(m, false);
 		}
+	}
+	if (beatCount % 16 == 0) {
 		for (int i = 0; i < 12; i++) {
+			//send bpm
 			ofxOscMessage m2;
 			m2.setAddress("/bpm");
 			m2.addIntArg(app->bpm);

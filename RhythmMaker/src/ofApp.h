@@ -5,7 +5,7 @@
 #include "OscHandler.h"
 #include "OscSender.h"
 #include "RhythmGen.h"
-#include "RippleManager.h"
+#include "KeyRectManager.h"
 
 class ofApp : public ofBaseApp {
 
@@ -30,7 +30,7 @@ public:
 	OscHandler* osc;
 	OscSender* oscSender;
 	RhythmGen* rhythmGen;
-	RippleManager* rippleManager;
+	KeyRectManager* keyRectManager;
 	ofxXmlSettings xml;
 	string address;
 	int id;
