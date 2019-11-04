@@ -30,7 +30,7 @@ void OscSender::getBeat() {
 	if (beatCount % 6 == 0) {
 		//set Player part
 		int on[12];
-		int partNum = ofRandom(2, 8);
+		int partNum = ofRandom(2, 10);
 		for (int i = 0; i < 12; i++) {
 			if (i <= partNum) {
 				on[i] = 1;
@@ -51,10 +51,10 @@ void OscSender::getBeat() {
 	if (beatCount % 16 == 0) {
 		for (int i = 0; i < 12; i++) {
 			//send bpm
-			ofxOscMessage m2;
-			m2.setAddress("/bpm");
-			m2.addIntArg(app->bpm);
-			sender[i].sendMessage(m2, false);
+			ofxOscMessage m;
+			m.setAddress("/bpm");
+			m.addIntArg(app->bpm);
+			sender[i].sendMessage(m, false);
 		}
 	}
 	beatCount++;
