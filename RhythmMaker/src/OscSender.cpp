@@ -58,6 +58,17 @@ void OscSender::getBeat() {
 		}
 	}
 	beatCount++;
+
+	//Check live
+	if (app->id == 0) {
+		if (beatCount % 64 == 0) {
+			for (int i = 0; i < 12; i++) {
+				ofxOscMessage m;
+				m.setAddress("/start");
+				sender[i].sendMessage(m, false);
+			}
+		}
+	}
 }
 
 void OscSender::exit() {

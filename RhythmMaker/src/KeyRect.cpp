@@ -2,14 +2,15 @@
 
 KeyRect::KeyRect() {
 	corner = glm::vec2(0, 0);
+	color = ofColor(127, 255, 255);
 	speed = 4.0;
 	alpha = 255;
 }
 
 void KeyRect::draw() {
 	if (live) {
-		ofSetColor(63, 190, 255, alpha);
-		ofDrawRectangle(corner, ofGetWidth()/8, ofGetHeight());
+		ofSetColor(color.r, color.g, color.b, alpha);
+		ofDrawRectangle(corner, ofGetWidth()/4, ofGetHeight());
 		alpha *= 0.9999;
 
 		if (alpha < 1.0) {

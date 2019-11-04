@@ -16,7 +16,7 @@ RandomShader::RandomShader(){
 void RandomShader::update() {
 	fbo.begin();
 	shaders[num].begin();
-	shaders[num].setUniform1f("time", ofGetElapsedTimef() * 0.2);
+	shaders[num].setUniform1f("time", ofGetElapsedTimef() * 0.1);
 	shaders[num].setUniform2f("resolution", 1920, 1080);
 	ofDrawRectangle(0, 0, 1920, 1080);
 	shaders[num].end();

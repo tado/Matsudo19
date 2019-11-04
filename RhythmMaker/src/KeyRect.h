@@ -11,5 +11,6 @@ public:
 	int alpha;
 	glm::vec2 corner;
 	bool live;
+	ofColor color;
 }; 
 

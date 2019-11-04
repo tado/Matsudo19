@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "RandomShader.h"
+#include "SoundMix.h"
 
 class ofApp : public ofBaseApp {
 
@@ -22,6 +23,7 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-	static const int NUM = 6;
+	static const int NUM = 8;
 	RandomShader shader[NUM];
+	vector<SoundMix*> sound;
 };

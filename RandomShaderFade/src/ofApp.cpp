@@ -6,6 +6,10 @@ void ofApp::setup(){
 	ofToggleFullscreen();
 	ofSetWindowShape(1920, 1080);
 	ofHideCursor();
+
+	for (int i = 0; i < 6; i++)	{
+		sound.push_back(new SoundMix(i));
+	}
 }
 
 //--------------------------------------------------------------
@@ -20,7 +24,7 @@ void ofApp::draw(){
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	for (int i = 0; i < NUM; i++) {
 		float br = sin(ofGetElapsedTimef() / 3.0 + TWO_PI / NUM * i) * 48 + 48;
-		ofSetColor(br * 0.4, br * 1.2, br * 1.2);
+		ofSetColor(br * 0.4, br * 1.0, br * 1.0);
 		if (br <= 5) {
 			shader[i].changeShader();
 		}
