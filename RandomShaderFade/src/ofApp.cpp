@@ -10,6 +10,7 @@ void ofApp::setup(){
 	for (int i = 0; i < 6; i++)	{
 		sound.push_back(new SoundMix(i));
 	}
+	showCode = new ShowCode();
 }
 
 //--------------------------------------------------------------
@@ -25,11 +26,12 @@ void ofApp::draw(){
 	for (int i = 0; i < NUM; i++) {
 		float br = sin(ofGetElapsedTimef() / 3.0 + TWO_PI / NUM * i) * 48 + 48;
 		ofSetColor(br * 0.4, br * 1.0, br * 1.0);
-		if (br <= 5) {
+		if (br < 0.001) {
 			shader[i].changeShader();
 		}
 		shader[i].fbo.draw(0, 0, ofGetWidth(), ofGetHeight());
 	}
+	showCode->drawCode(shader[0].num);
 	ofDisableBlendMode();
 }
 

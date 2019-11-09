@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "RandomShader.h"
 #include "SoundMix.h"
+#include "ShowCode.h"
 
 class ofApp : public ofBaseApp {
 
@@ -26,4 +27,5 @@ public:
 	static const int NUM = 8;
 	RandomShader shader[NUM];
 	vector<SoundMix*> sound;
+	ShowCode* showCode;
 };
