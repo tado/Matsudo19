@@ -26,8 +26,8 @@ void ofApp::draw(){
 	string allCode = "";
 	for (int i = 0; i < NUM; i++) {
 		float br = sin(ofGetElapsedTimef() / 1.0 + TWO_PI / NUM * i) * 48 + 48;
-		ofSetColor(br * 0.4, br * 1.0, br * 1.0);
-		if (br < 0.001) {
+		ofSetColor(br * 0.4, br * 1.0, br * 0.8);
+		if (br < 0.1) {
 			shader[i].changeShader();
 		}
 		shader[i].fbo.draw(0, 0, ofGetWidth(), ofGetHeight());
