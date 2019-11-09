@@ -7,9 +7,10 @@ public:
 	RhythmGen(int bpm);
 	void getBeat();
 	void draw();
+	void reset();
 
 	ofxSequencerBpm sequenceBpm;
-	//int bpm;
+	int bpm;
 	int sndNum;
 	vector<ofSoundPlayer> snd;
 	int beatCount;

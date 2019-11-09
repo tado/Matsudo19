@@ -8,12 +8,20 @@ OscSender::OscSender() {
 		sender[i].setup("192.168.11." + ofToString(20 + i), 10000);
 	}
 	beatCount = 0;
-	bpm.setBpm(ofRandom(10, 20));
+	bpm.setBpm(ofRandom(10, 32));
 	bpm.setBeatPerBar(1);
 	ofAddListener(bpm.beatEvent, this, &OscSender::getBeat);
 	bpm.start();
 	app->rhythmGen->sequenceBpm.start();
 
+	//init send bpm
+	for (int i = 0; i < 12; i++) {
+		//send bpm
+		ofxOscMessage m;
+		m.setAddress("/bpm");
+		m.addIntArg(app->bpm);
+		sender[i].sendMessage(m, false);
+	}
 	/*
 	if (app->id == 0) {
 		for (int i = 0; i < 12; i++) {
@@ -25,12 +33,26 @@ OscSender::OscSender() {
 	*/
 }
 
+void OscSender::update() {
+	ofApp* app = ((ofApp*)ofGetAppPtr());
+	if (bpm.isPlaying() == false) {
+		bpm.stop();
+		bpm.reset();
+		bpm.setBpm(ofRandom(10, 32));
+		bpm.setBeatPerBar(1);
+		bpm.start();
+	}
+	if (app->rhythmGen->sequenceBpm.isPlaying() == false) {
+		app->rhythmGen->reset();
+	}
+}
+
 void OscSender::getBeat() {
 	ofApp* app = ((ofApp*)ofGetAppPtr());
-	if (beatCount % 6 == 0) {
+	if (beatCount % 8 == 0) {
 		//set Player part
 		int on[12];
-		int partNum = ofRandom(2, 10);
+		int partNum = int(ofRandom(2, 12));
 		for (int i = 0; i < 12; i++) {
 			if (i <= partNum) {
 				on[i] = 1;
@@ -58,8 +80,11 @@ void OscSender::getBeat() {
 		}
 	}
 	beatCount++;
+	if (beatCount > 1024) {
+		beatCount = 0;
+	}
 
-	//Check live
+	/*
 	if (app->id == 0) {
 		if (beatCount % 64 == 0) {
 			for (int i = 0; i < 12; i++) {
@@ -69,9 +94,11 @@ void OscSender::getBeat() {
 			}
 		}
 	}
+	*/
 }
 
 void OscSender::exit() {
+	/*
 	ofApp* app = ((ofApp*)ofGetAppPtr());
 	if (app->id == 0) {
 		bpm.start();
@@ -81,4 +108,5 @@ void OscSender::exit() {
 			sender[i].sendMessage(m, false);
 		}
 	}
+	*/
 }

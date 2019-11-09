@@ -29,8 +29,9 @@ void OscHandler::update() {
 			app->rhythmGen->sequenceBpm.setBpm(m.getArgAsInt(0));
 			app->rhythmGen->beatCount = 0;
 			if (app->rhythmGen->sequenceBpm.isPlaying()) {
-				app->rhythmGen->sequenceBpm.stop();
-				app->rhythmGen->sequenceBpm.start();
+				//app->rhythmGen->sequenceBpm.stop();
+				//app->rhythmGen->sequenceBpm.start();
+				app->rhythmGen->sequenceBpm.reset();
 			}
 		}
 	}

@@ -6,6 +6,7 @@
 class OscSender {
 public:
 	OscSender();
+	void update();
 	void getBeat();
 	void exit();
 

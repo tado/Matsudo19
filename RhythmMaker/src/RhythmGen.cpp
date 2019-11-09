@@ -2,9 +2,9 @@
 #include "ofApp.h"
 
 RhythmGen::RhythmGen(int _bpm) {
-	//bpm = _bpm;
+	bpm = _bpm;
 	live = true;
-	sequenceBpm.setBpm(_bpm);
+	sequenceBpm.setBpm(bpm);
 	sequenceBpm.setBeatPerBar(div);
 
 	string path = ofToDataPath("newGamelan");
@@ -41,6 +41,15 @@ RhythmGen::RhythmGen(int _bpm) {
 
 void RhythmGen::draw() {
 
+}
+
+void RhythmGen::reset() {
+	sequenceBpm.stop();
+	sequenceBpm.reset();
+	live = true;
+	sequenceBpm.setBpm(bpm);
+	sequenceBpm.setBeatPerBar(div);
+	sequenceBpm.start();
 }
 
 void RhythmGen::getBeat() {
