@@ -23,15 +23,18 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
+	string allCode = "";
 	for (int i = 0; i < NUM; i++) {
-		float br = sin(ofGetElapsedTimef() / 3.0 + TWO_PI / NUM * i) * 48 + 48;
+		float br = sin(ofGetElapsedTimef() / 1.0 + TWO_PI / NUM * i) * 48 + 48;
 		ofSetColor(br * 0.4, br * 1.0, br * 1.0);
 		if (br < 0.001) {
 			shader[i].changeShader();
 		}
 		shader[i].fbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+		allCode += showCode->shaderString[shader[i].num];
 	}
-	showCode->drawCode(shader[0].num);
+	ofSetColor(255);
+	ofDrawBitmapString(allCode, 40, 40);
 	ofDisableBlendMode();
 }
 

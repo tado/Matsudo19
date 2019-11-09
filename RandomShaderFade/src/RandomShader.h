@@ -12,5 +12,6 @@ public:
 	vector<ofShader> shaders;
 	ofFbo fbo;
 	int num;
+	float changedTime;
 };
 

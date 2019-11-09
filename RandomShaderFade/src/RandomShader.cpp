@@ -9,6 +9,7 @@ RandomShader::RandomShader(){
 		sh.load("", "100fragments/" + digit.str() + ".frag");
 		shaders.push_back(sh);
 	}
+	changedTime = 0.0;
 	num = int(ofRandom(shaders.size()));
 	fbo.allocate(1920, 1080);
 }
@@ -16,7 +17,7 @@ RandomShader::RandomShader(){
 void RandomShader::update() {
 	fbo.begin();
 	shaders[num].begin();
-	shaders[num].setUniform1f("time", ofGetElapsedTimef() * 0.1);
+	shaders[num].setUniform1f("time", (ofGetElapsedTimef() - changedTime) * 0.05);
 	shaders[num].setUniform2f("resolution", 1920, 1080);
 	ofDrawRectangle(0, 0, 1920, 1080);
 	shaders[num].end();
@@ -24,6 +25,7 @@ void RandomShader::update() {
 }
 void RandomShader::changeShader() {
 	num = int(ofRandom(shaders.size()));
+	changedTime = ofGetElapsedTimef();
 }
 
 RandomShader::~RandomShader(){
