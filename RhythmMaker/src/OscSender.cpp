@@ -50,7 +50,7 @@ void OscSender::getBeat() {
 				on[i] = 0;
 			}
 		}
-		random_shuffle(&on[0], &on[11]);
+		random_shuffle(&on[0], &on[12]);
 		for (int i = 0; i < 12; i++) {
 			//send que to players
 			ofxOscMessage m;

@@ -28,7 +28,7 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw(){
 	keyRectManager->draw();
-	showLog();
+	//showLog();
 }
 
 void ofApp::exit() {

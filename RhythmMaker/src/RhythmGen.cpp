@@ -34,7 +34,7 @@ RhythmGen::RhythmGen(int _bpm) {
 			amp[i] = 0.0;
 		}
 	}
-	random_shuffle(&amp[0], &amp[div - 1]);
+	random_shuffle(&amp[0], &amp[div]);
 	ofAddListener(sequenceBpm.beatEvent, this, &RhythmGen::getBeat);
 	beatCount = 0;
 }
