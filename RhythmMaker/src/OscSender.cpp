@@ -22,15 +22,6 @@ OscSender::OscSender() {
 		m.addIntArg(app->bpm);
 		sender[i].sendMessage(m, false);
 	}
-	/*
-	if (app->id == 0) {
-		for (int i = 0; i < 12; i++) {
-			ofxOscMessage m;
-			m.setAddress("/start");
-			sender[i].sendMessage(m, false);
-		}
-	}
-	*/
 }
 
 void OscSender::update() {
@@ -38,8 +29,6 @@ void OscSender::update() {
 	if (bpm.isPlaying() == false) {
 		bpm.stop();
 		bpm.reset();
-		bpm.setBpm(ofRandom(10, 32));
-		bpm.setBeatPerBar(1);
 		bpm.start();
 	}
 	if (app->rhythmGen->sequenceBpm.isPlaying() == false) {
@@ -78,23 +67,12 @@ void OscSender::getBeat() {
 			m.addIntArg(app->bpm);
 			sender[i].sendMessage(m, false);
 		}
-	}
-	beatCount++;
-	if (beatCount > 1024) {
 		beatCount = 0;
 	}
-
-	/*
-	if (app->id == 0) {
-		if (beatCount % 64 == 0) {
-			for (int i = 0; i < 12; i++) {
-				ofxOscMessage m;
-				m.setAddress("/start");
-				sender[i].sendMessage(m, false);
-			}
-		}
+	beatCount++;
+	if (beatCount > 16) {
+		bpm.reset();
 	}
-	*/
 }
 
 void OscSender::exit() {

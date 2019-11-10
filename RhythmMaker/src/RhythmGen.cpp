@@ -46,9 +46,6 @@ void RhythmGen::draw() {
 void RhythmGen::reset() {
 	sequenceBpm.stop();
 	sequenceBpm.reset();
-	live = true;
-	sequenceBpm.setBpm(bpm);
-	sequenceBpm.setBeatPerBar(div);
 	sequenceBpm.start();
 }
 
