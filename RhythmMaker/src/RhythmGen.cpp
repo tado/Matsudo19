@@ -43,11 +43,13 @@ void RhythmGen::draw() {
 
 }
 
+/*
 void RhythmGen::reset() {
 	sequenceBpm.stop();
 	sequenceBpm.reset();
 	sequenceBpm.start();
 }
+*/
 
 void RhythmGen::getBeat() {
 	ofApp* app = ((ofApp*)ofGetAppPtr());

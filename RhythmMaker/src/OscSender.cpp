@@ -48,6 +48,7 @@ void OscSender::update() {
 		}
 	}
 	if (ofGetElapsedTimef() > tempoLastTime + tempoIntervalTime) {
+		//ofResetElapsedTimeCounter();
 		tempoLastTime = ofGetElapsedTimef();
 		for (int i = 0; i < 12; i++) {
 			//send bpm

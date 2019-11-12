@@ -7,7 +7,7 @@ public:
 	RhythmGen(int bpm);
 	void getBeat();
 	void draw();
-	void reset();
+	//void reset();
 
 	ofxSequencerBpm sequenceBpm;
 	int bpm;

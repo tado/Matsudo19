@@ -28,11 +28,13 @@ void OscHandler::update() {
 		if (m.getAddress() == "/bpm") {
 			app->rhythmGen->sequenceBpm.setBpm(m.getArgAsInt(0));
 			app->rhythmGen->beatCount = 0;
+			app->rhythmGen->sequenceBpm.start();
+			/*
 			if (app->rhythmGen->sequenceBpm.isPlaying()) {
 				//app->rhythmGen->sequenceBpm.stop();
-				//app->rhythmGen->sequenceBpm.start();
-				app->rhythmGen->reset();
+				//app->rhythmGen->reset();
 			}
+			*/
 		}
 	}
 }
