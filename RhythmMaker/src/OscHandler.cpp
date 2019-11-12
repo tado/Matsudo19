@@ -31,7 +31,7 @@ void OscHandler::update() {
 			if (app->rhythmGen->sequenceBpm.isPlaying()) {
 				//app->rhythmGen->sequenceBpm.stop();
 				//app->rhythmGen->sequenceBpm.start();
-				app->rhythmGen->sequenceBpm.reset();
+				app->rhythmGen->reset();
 			}
 		}
 	}

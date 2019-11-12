@@ -41,7 +41,7 @@ void OscSender::getBeat() {
 	if (beatCount % 8 == 0) {
 		//set Player part
 		int on[12];
-		int partNum = int(ofRandom(2, 12));
+		int partNum = int(ofRandom(2, 8));
 		for (int i = 0; i < 12; i++) {
 			if (i <= partNum) {
 				on[i] = 1;
@@ -71,7 +71,9 @@ void OscSender::getBeat() {
 	}
 	beatCount++;
 	if (beatCount > 16) {
+		bpm.stop();
 		bpm.reset();
+		bpm.start();
 	}
 }
 
