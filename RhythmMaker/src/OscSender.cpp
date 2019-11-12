@@ -7,13 +7,7 @@ OscSender::OscSender() {
 	for (int i = 0; i < 12; i++) {
 		sender[i].setup("192.168.11." + ofToString(20 + i), 10000);
 	}
-	beatCount = 0;
-	bpm.setBpm(ofRandom(10, 32));
-	bpm.setBeatPerBar(1);
-	ofAddListener(bpm.beatEvent, this, &OscSender::getBeat);
-	bpm.start();
-	app->rhythmGen->sequenceBpm.start();
-
+	app->rhythmGen->sequenceBpm.start();	
 	//init send bpm
 	for (int i = 0; i < 12; i++) {
 		//send bpm
@@ -22,20 +16,50 @@ OscSender::OscSender() {
 		m.addIntArg(app->bpm);
 		sender[i].sendMessage(m, false);
 	}
+
+	partLastTime = ofGetElapsedTimef();
+	tempoLastTime = ofGetElapsedTimef();
+	partIntervalTime = ofRandom(60, 120);
+	tempoIntervalTime = ofRandom(120, 240);
 }
 
 void OscSender::update() {
 	ofApp* app = ((ofApp*)ofGetAppPtr());
-	if (bpm.isPlaying() == false) {
-		bpm.stop();
-		bpm.reset();
-		bpm.start();
+	if (ofGetElapsedTimef() > partLastTime + partIntervalTime) {
+		partLastTime = ofGetElapsedTimef();
+		//set Player part
+		int on[12];
+		int partNum = int(ofRandom(2, 8));
+		for (int i = 0; i < 12; i++) {
+			if (i <= partNum) {
+				on[i] = 1;
+			}
+			else {
+				on[i] = 0;
+			}
+		}
+		random_shuffle(&on[0], &on[12]);
+		for (int i = 0; i < 12; i++) {
+			//send que to players
+			ofxOscMessage m;
+			m.setAddress("/que");
+			m.addIntArg(on[i]);
+			sender[i].sendMessage(m, false);
+		}
 	}
-	if (app->rhythmGen->sequenceBpm.isPlaying() == false) {
-		app->rhythmGen->reset();
+	if (ofGetElapsedTimef() > tempoLastTime + tempoIntervalTime) {
+		tempoLastTime = ofGetElapsedTimef();
+		for (int i = 0; i < 12; i++) {
+			//send bpm
+			ofxOscMessage m;
+			m.setAddress("/bpm");
+			m.addIntArg(app->bpm);
+			sender[i].sendMessage(m, false);
+		}
 	}
 }
 
+/*
 void OscSender::getBeat() {
 	ofApp* app = ((ofApp*)ofGetAppPtr());
 	if (beatCount % 8 == 0) {
@@ -76,6 +100,7 @@ void OscSender::getBeat() {
 		bpm.start();
 	}
 }
+*/
 
 void OscSender::exit() {
 	/*
