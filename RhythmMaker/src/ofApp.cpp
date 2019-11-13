@@ -23,12 +23,20 @@ void ofApp::setup() {
 void ofApp::update() {
 	osc->update();
 	oscSender->update();
+	if (ofGetElapsedTimef() > 1024) {
+		ofResetElapsedTimeCounter();
+		rhythmGen->sequenceBpm.start();
+		oscSender->partLastTime = ofGetElapsedTimef();
+		oscSender->tempoLastTime = ofGetElapsedTimef();
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	keyRectManager->draw();
 	//showLog();
+	ofSetColor(255);
+	ofDrawBitmapString(ofGetElapsedTimef(), 20, 20);
 }
 
 void ofApp::exit() {

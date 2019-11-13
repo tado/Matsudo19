@@ -11,7 +11,7 @@ void KeyRect::draw() {
 	if (live) {
 		ofSetColor(color.r, color.g, color.b, alpha);
 		ofDrawRectangle(corner, ofGetWidth()/4, ofGetHeight());
-		alpha *= 0.9999;
+		alpha *= 0.99;
 
 		if (alpha < 1.0) {
 			live = false;

@@ -7,7 +7,6 @@ class OscSender {
 public:
 	OscSender();
 	void update();
-	void exit();
 	float partIntervalTime;
 	float tempoIntervalTime;
 	float partLastTime;

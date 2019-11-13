@@ -48,7 +48,6 @@ void OscSender::update() {
 		}
 	}
 	if (ofGetElapsedTimef() > tempoLastTime + tempoIntervalTime) {
-		//ofResetElapsedTimeCounter();
 		tempoLastTime = ofGetElapsedTimef();
 		for (int i = 0; i < 12; i++) {
 			//send bpm
@@ -101,10 +100,8 @@ void OscSender::getBeat() {
 		bpm.start();
 	}
 }
-*/
 
 void OscSender::exit() {
-	/*
 	ofApp* app = ((ofApp*)ofGetAppPtr());
 	if (app->id == 0) {
 		bpm.start();
@@ -114,5 +111,5 @@ void OscSender::exit() {
 			sender[i].sendMessage(m, false);
 		}
 	}
-	*/
 }
+*/

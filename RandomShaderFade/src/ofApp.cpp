@@ -18,6 +18,9 @@ void ofApp::update(){
 	for (int i = 0; i < NUM; i++) {
 		shader[i].update();
 	}
+	if (ofGetElapsedTimef() > 3600) {
+		ofResetElapsedTimeCounter();
+	}
 }
 
 //--------------------------------------------------------------

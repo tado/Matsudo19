@@ -12,9 +12,9 @@ RhythmGen::RhythmGen(int _bpm) {
 	dir.allowExt("wav");
 	dir.listDir();
 
-	int sampleLength = 40;
+	int sampleLength = 10;
 	int sampleBegin = ofRandom(0, dir.size() - sampleLength);
-	for (int i = sampleBegin; i < sampleBegin + 40; i++) {
+	for (int i = sampleBegin; i < sampleBegin + sampleLength; i++) {
 		ofLogNotice(dir.getPath(i));
 		ofSoundPlayer s;
 		s.loadSound(dir.getPath(i));
@@ -24,7 +24,7 @@ RhythmGen::RhythmGen(int _bpm) {
 
 	for (int i = 0; i < div; i++) {
 		notes.push_back(ofRandom(0, snd.size()));
-		pan.push_back(ofRandom(-1.0, 1.0));
+		//pan.push_back(ofRandom(-1.0, 1.0));
 	}
 	for (int i = 0; i < div; i++) {
 		if (i < div / 4) {
@@ -43,14 +43,6 @@ void RhythmGen::draw() {
 
 }
 
-/*
-void RhythmGen::reset() {
-	sequenceBpm.stop();
-	sequenceBpm.reset();
-	sequenceBpm.start();
-}
-*/
-
 void RhythmGen::getBeat() {
 	ofApp* app = ((ofApp*)ofGetAppPtr());
 	if (live) {
@@ -62,10 +54,10 @@ void RhythmGen::getBeat() {
 
 		if (beatCount % (div * 2) == 0) {
 			notes.clear();
-			pan.clear();
+			//pan.clear();
 			for (int i = 0; i < div; i++) {
 				notes.push_back(ofRandom(0, snd.size()));
-				pan.push_back(ofRandom(-1.0, 1.0));
+				//pan.push_back(ofRandom(-1.0, 1.0));
 			}
 			random_shuffle(&amp[0], &amp[div - 1]);
 			beatCount = 0;
