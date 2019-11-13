@@ -35,8 +35,8 @@ void ofApp::update() {
 void ofApp::draw(){
 	keyRectManager->draw();
 	//showLog();
-	ofSetColor(255);
-	ofDrawBitmapString(ofGetElapsedTimef(), 20, 20);
+	//ofSetColor(255);
+	//ofDrawBitmapString(ofGetElapsedTimef(), 20, 20);
 }
 
 void ofApp::exit() {
