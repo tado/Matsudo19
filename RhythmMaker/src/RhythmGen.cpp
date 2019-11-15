@@ -12,7 +12,7 @@ RhythmGen::RhythmGen(int _bpm) {
 	dir.allowExt("wav");
 	dir.listDir();
 
-	int sampleLength = 10;
+	int sampleLength = 20;
 	int sampleBegin = ofRandom(0, dir.size() - sampleLength);
 	for (int i = sampleBegin; i < sampleBegin + sampleLength; i++) {
 		ofLogNotice(dir.getPath(i));
