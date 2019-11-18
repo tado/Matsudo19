@@ -6,13 +6,14 @@ void ofApp::setup() {
 	ofBackground(0);
 	ofHideCursor();
 
+	partNum = 4;
 	rhythmGen = new RhythmGen(60);
 	xml.loadFile("settings.xml");
 	cout << xml.getValue("address", "127.0.0.1") << endl;
 	cout << xml.getValue("id", 0) << endl;
 	address = xml.getValue("address", "127.0.0.1");
 	id = xml.getValue("id", 0);
-	bpm = int(ofMap(id, 0, 11, 20, 120));
+	bpm = int(ofMap(id, 0, partNum - 1, 40, 120));
 
 	osc = new OscHandler();
 	oscSender = new OscSender();

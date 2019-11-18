@@ -36,4 +36,5 @@ public:
 	string address;
 	int id;
 	int bpm;
+	int partNum;
 };

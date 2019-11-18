@@ -2,7 +2,7 @@
 
 KeyRect::KeyRect() {
 	corner = glm::vec2(0, 0);
-	color = ofColor(127, 255, 255);
+	color = ofColor(255);
 	speed = 4.0;
 	alpha = 255;
 }
