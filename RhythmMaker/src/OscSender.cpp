@@ -28,14 +28,16 @@ void OscSender::update() {
 	if (ofGetElapsedTimef() > partLastTime + partIntervalTime) {
 		partLastTime = ofGetElapsedTimef();
 		//set Player part
-		int on[4];
+		int n = app->partNum;
+		vector<int> on;
+		//int partNum = int(ofRandom(1, app->partNum));
 		int partNum = int(ofRandom(1, app->partNum));
 		for (int i = 0; i < app->partNum; i++) {
 			if (i <= partNum) {
-				on[i] = 1;
+				on.push_back(1);
 			}
 			else {
-				on[i] = 0;
+				on.push_back(0);
 			}
 		}
 		random_shuffle(&on[0], &on[app->partNum]);

@@ -6,7 +6,7 @@ void ofApp::setup() {
 	ofBackground(0);
 	ofHideCursor();
 
-	partNum = 4;
+	partNum = 12;
 	rhythmGen = new RhythmGen(60);
 	xml.loadFile("settings.xml");
 	cout << xml.getValue("address", "127.0.0.1") << endl;
