@@ -191,6 +191,8 @@
     <ClCompile Include="src\OscHandler.cpp" />
     <ClCompile Include="src\OscSender.cpp" />
     <ClCompile Include="src\RhythmGen.cpp" />
+    <ClCompile Include="src\Ripple.cpp" />
+    <ClCompile Include="src\RippleManager.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
@@ -217,6 +219,8 @@
     <ClInclude Include="src\OscHandler.h" />
     <ClInclude Include="src\OscSender.h" />
     <ClInclude Include="src\RhythmGen.h" />
+    <ClInclude Include="src\Ripple.h" />
+    <ClInclude Include="src\RippleManager.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h" />
