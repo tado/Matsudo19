@@ -7,14 +7,17 @@ void ofApp::setup(){
 	ofHideCursor();
 
 	for (int i = 0; i < NUM; i++) {
-		rhythmGen[i] = new RhythmGen(60);
-		rhythmGen[i]->sequenceBpm.start();
+		rhythmGen[i] = new RhythmGen(100);
 	}
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+	if (ofGetFrameNum() == 120) {
+		for (int i = 0; i < NUM; i++) {
+			rhythmGen[i]->sequenceBpm.start();
+		}
+	}
 }
 
 //--------------------------------------------------------------

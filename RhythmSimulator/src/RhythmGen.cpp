@@ -4,6 +4,7 @@
 RhythmGen::RhythmGen(int _bpm) {
 	bpm = _bpm;
 	live = true;
+	repeat = int(ofRandom(4, 8));
 	sequenceBpm.setBpm(bpm);
 	sequenceBpm.setBeatPerBar(div);
 
@@ -15,7 +16,7 @@ RhythmGen::RhythmGen(int _bpm) {
 	int sampleLength = dir.size();
 	int sampleBegin = ofRandom(0, dir.size() - sampleLength);
 	for (int i = sampleBegin; i < sampleBegin + sampleLength; i++) {
-		ofLogNotice(dir.getPath(i));
+		//ofLogNotice(dir.getPath(i));
 		ofSoundPlayer s;
 		s.loadSound(dir.getPath(i));
 		snd.push_back(s);
@@ -27,8 +28,8 @@ RhythmGen::RhythmGen(int _bpm) {
 		//pan.push_back(ofRandom(-1.0, 1.0));
 	}
 	for (int i = 0; i < div; i++) {
-		if (i < div / 4) {
-			amp[i] = 1.0;
+		if (i < div / 8) {
+			amp[i] = 0.75;
 		}
 		else {
 			amp[i] = 0.0;
@@ -52,7 +53,7 @@ void RhythmGen::getBeat() {
 		snd[n].play();
 		beatCount++;
 
-		if (beatCount % (div * 4) == 0) {
+		if (beatCount % (div * repeat) == 0) {
 			notes.clear();
 			//pan.clear();
 			for (int i = 0; i < div; i++) {

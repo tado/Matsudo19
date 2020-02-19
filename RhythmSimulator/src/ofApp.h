@@ -22,6 +22,6 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-	static const int NUM = 4;
+	static const int NUM = 6;
 	RhythmGen* rhythmGen[NUM];
 };
